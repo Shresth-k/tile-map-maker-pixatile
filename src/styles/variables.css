@@ -1,0 +1,78 @@
+/* ===========================
+   CSS CUSTOM PROPERTIES
+   Matched to SpriteFusion's retro dark-gray palette
+   =========================== */
+:root {
+  /* Colors — Retro Dark Theme (SpriteFusion style) */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2a2a2a;
+  --bg-tertiary: #333333;
+  --bg-elevated: #3a3a3a;
+  --bg-hover: #404040;
+  --bg-active: #4a4a4a;
+
+  --surface: #2e2e2e;
+  --surface-hover: #383838;
+  --surface-active: #444444;
+
+  --border: #444444;
+  --border-subtle: #363636;
+  --border-focus: #6a6a6a;
+
+  --text-primary: #d4d4d4;
+  --text-secondary: #aaaaaa;
+  --text-muted: #777777;
+  --text-accent: #b0b0b0;
+
+  --accent: #5a8a5a;
+  --accent-hover: #6a9a6a;
+  --accent-glow: rgba(90, 138, 90, 0.25);
+  --accent-soft: rgba(90, 138, 90, 0.1);
+
+  --selection-blue: #4488cc;
+  --selection-blue-fill: rgba(68, 136, 204, 0.2);
+
+  --success: #5a8a5a;
+  --warning: #cc9944;
+  --danger: #cc5555;
+
+  /* Typography — pixel/retro feel */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-xs: 0.6875rem;
+  --font-sm: 0.75rem;
+  --font-base: 0.8125rem;
+  --font-md: 0.875rem;
+  --font-lg: 1rem;
+  --font-xl: 1.125rem;
+
+  /* Spacing */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+
+  /* Layout */
+  --header-height: 40px;
+  --sidebar-width: 300px;
+  --mobile-toolbar-height: 52px;
+  --panel-header-height: 32px;
+
+  /* Borders & Radii */
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-xl: 4px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-md: 0 2px 8px rgba(0,0,0,0.5);
+  --shadow-lg: 0 4px 16px rgba(0,0,0,0.6);
+
+  /* Transitions */
+  --transition-fast: 100ms ease;
+  --transition-base: 180ms ease;
+  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}

@@ -1,0 +1,367 @@
+/* ===========================
+   LAYOUT — SpriteFusion-style
+   =========================== */
+
+/* App Shell */
+#app {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  /* dvh accounts for browser chrome (URL bar) on mobile */
+  height: 100dvh;
+  min-height: 100dvh;
+  overflow: hidden;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+  padding: 0 var(--sp-2);
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+  flex-shrink: 0;
+  gap: var(--sp-1);
+}
+
+.header__left {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-width: 0;
+}
+
+.header__menu-btn {
+  display: none;
+}
+
+.header__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.header__logo {
+  flex-shrink: 0;
+}
+
+.header__project-name {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  font-size: var(--font-md);
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+  height: 28px;
+}
+
+.header__project-name:hover {
+  background: var(--bg-hover);
+}
+
+.header__tools {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  flex-shrink: 0;
+}
+
+.header__zoom {
+  font-size: var(--font-sm);
+  font-weight: 500;
+  color: var(--text-secondary);
+  min-width: 40px;
+  text-align: center;
+  user-select: none;
+}
+
+/* Main Layout */
+.main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Sidebar */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: var(--sidebar-width);
+  min-width: var(--sidebar-width);
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border);
+  z-index: 50;
+  overflow: hidden;
+  transition: transform var(--transition-slow), width var(--transition-slow);
+}
+
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 49;
+}
+
+/* Canvas Container */
+.canvas-container {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-primary);
+  cursor: crosshair;
+}
+
+.canvas-container canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.canvas-coords {
+  position: absolute;
+  bottom: var(--sp-2);
+  right: var(--sp-2);
+  font-size: var(--font-xs);
+  font-weight: 500;
+  color: var(--text-muted);
+  background: rgba(30, 30, 30, 0.9);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  pointer-events: none;
+  user-select: none;
+  z-index: 10;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Right Layers Drawer — absolute overlay so canvas always fills full width */
+.layers-drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 220px;
+  background: var(--bg-secondary);
+  border-left: 1px solid var(--border);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateX(0);
+  transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+  box-shadow: -4px 0 12px rgba(0,0,0,0.3);
+}
+
+.layers-drawer.closed {
+  transform: translateX(100%);
+  pointer-events: none;
+  box-shadow: none;
+}
+
+/* Mobile Toolbar */
+.mobile-toolbar {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+  height: var(--mobile-toolbar-height);
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  padding: 0 var(--sp-4);
+  z-index: 100;
+  flex-shrink: 0;
+}
+
+/* Selection action buttons — icon-only, compact */
+.selection-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.selection-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  font-size: var(--font-sm);
+}
+
+/* Hide text labels on selection buttons always */
+.selection-btn .btn-label {
+  display: none;
+}
+
+.selection-btn--danger {
+  color: #e07070 !important;
+}
+
+.selection-btn--danger:hover {
+  background: rgba(224, 112, 112, 0.15) !important;
+}
+
+/* Layers toggle active state */
+#layers-toggle.active {
+  background: var(--bg-active);
+  color: var(--accent);
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+
+@media (max-width: 768px) {
+  .header__menu-btn {
+    display: flex;
+  }
+
+  .header__tools {
+    display: none;
+  }
+
+  .header__project-name {
+    max-width: 120px;
+  }
+
+  .btn-label {
+    display: none;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    bottom: 0;
+    transform: translateX(-100%);
+    z-index: 50;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-backdrop.visible {
+    display: block;
+  }
+
+  /* Layers drawer on mobile — fixed so it clears the header */
+  .layers-drawer {
+    position: fixed;
+    top: var(--header-height);
+    z-index: 55;
+  }
+
+  .layers-drawer.open {
+    transform: translateX(0);
+    pointer-events: auto;
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* closed state is inherited from base — translateX(100%) + pointer-events:none */
+
+  #layers-backdrop.visible {
+    display: block;
+    z-index: 49;
+  }
+
+  .mobile-toolbar {
+    display: flex;
+  }
+
+  .canvas-container {
+    cursor: default;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --sidebar-width: 280px;
+  }
+  .header__project-name {
+    max-width: 90px;
+    font-size: var(--font-sm);
+  }
+}
+/* ===========================
+   LANDSCAPE + SHORT VIEWPORT (phone landscape)
+   =========================== */
+@media (max-height: 500px) and (max-width: 900px) {
+  :root {
+    --header-height: 36px;
+    --mobile-toolbar-height: 0px;
+  }
+
+  /* Shrink header elements */
+  .header {
+    height: 36px;
+    padding: 0 6px;
+  }
+
+  .header__btn {
+    height: 24px;
+    padding: 2px 6px;
+    font-size: 11px;
+  }
+
+  .tool-btn {
+    height: 24px;
+    width: 28px;
+    padding: 2px;
+  }
+
+  /* Show tools in header on landscape (hidden on portrait mobile) */
+  .header__tools {
+    display: flex !important;
+    gap: 1px;
+  }
+
+  /* Hide mobile bottom toolbar — no height for it */
+  .mobile-toolbar {
+    display: none !important;
+  }
+
+  /* Sidebar and layers drawer: full height below shrunken header */
+  .sidebar {
+    top: 36px;
+  }
+
+  .layers-drawer {
+    top: 36px;
+  }
+
+  /* Project name shorter */
+  .header__project-name {
+    max-width: 80px;
+    font-size: 11px;
+    padding: 2px 6px;
+    height: 24px;
+  }
+}
